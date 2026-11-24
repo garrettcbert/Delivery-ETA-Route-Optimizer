@@ -1,6 +1,6 @@
 import pytest
 from router.load import load_stops
-from router.distance import distance_matrix
+from router.distance import distance_matrix, travel_time_matrix
 from pathlib import Path
 
 
@@ -11,5 +11,9 @@ def stops():
     return load_stops(STOPS_CSV)
 
 @pytest.fixture
-def matrix(stops):
+def dist_matrix(stops):
     return distance_matrix(stops)
+
+@pytest.fixture
+def tt_matrix(dist_matrix):
+    return travel_time_matrix(dist_matrix)

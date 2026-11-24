@@ -19,3 +19,7 @@ def distance_matrix(stops):
         matrix.append(matrix_row)
 
     return np.array(matrix)
+
+def travel_time_matrix(distances, speed_kmh = 40):
+    tt_matrix = (distances / speed_kmh) * 60 # How many minutes it takes between stops
+    return tt_matrix
